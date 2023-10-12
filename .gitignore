@@ -6,6 +6,11 @@ node_modules
 # C extensions
 *.so
 
+
+.vscode
+package-lock.json
+test.py
+
 # Distribution / packaging
 .Python
 build/
