@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "猿人学"
+version = "0.1.0"
+description = ""
+authors = ["Dream <1147262934@qq.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+lxml = "^4.9.2"
+httpx = {extras = ["http2"], version = "^0.23.1"}
+pywasm = "^1.0.7"
+opencv-python = "^4.6.0.66"
+pycryptodome = "^3.18.0"
+py-mini-racer = "^0.6.0"
+requests = "^2.31.0"
+fonttools = "^4.43.1"
+
+
+
+[tool.poetry.group.dev.dependencies]
+black = {version = "^22.12.0", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
