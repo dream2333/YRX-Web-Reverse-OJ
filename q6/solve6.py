@@ -1,6 +1,5 @@
 from time import time
 import httpx
-from urllib.parse import quote
 from py_mini_racer import py_mini_racer
 
 cookies = {

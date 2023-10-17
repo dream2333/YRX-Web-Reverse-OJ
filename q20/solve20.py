@@ -1,19 +1,29 @@
-import requests
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_v1_5 as PKCS1_cipher
-from base64 import b64encode
-public_key = "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDq04c6My441Gj0UFKgrqUhAUg+kQZeUeWSPlAU9fr4HBPDldAeqzx1UR99KJHuQh/zs1HOamE2dgX9z/2oXcJaqoRIA/FXysx+z2YlJkSk8XQLcQ8EBOkp//MZrixam7lCYpNOjadQBb2Ot0U/Ky+jF2p+Ie8gSZ7/u+Wnr5grywIDAQAB\n-----END PUBLIC KEY-----"
-key = RSA.import_key(public_key)
-encrypt = PKCS1_cipher.new(key)
-result = encrypt.encrypt("1|1697186779000".encode())
-print(b64encode(result))
-# url = "https://match.yuanrenxue.cn/api/match/20"
+import time
+import httpx
+from hashlib import md5
 
-# params = {
-#     "page": 1,
-#     "sign": "0bf0225b10ab9132c6cac25b839c5a73",
-#     "t": 1697182173000,
-# }
-# response = requests.get(url, params=params)
-
-# print(response.text)
+cookies = {
+    "sessionid": "x209bybvz4p1fbfpwnjn7tospd52pjph",
+}
+# url转码
+headers = {
+    "User-Agent": "yuanrenxue.project",
+}
+salt = "D#uqGdcw41pWeNXm"
+sum = 0
+for page in range(1, 6):
+    timestamp = int(time.time()) * 1000
+    sign = md5(f"{page}|{timestamp}{salt}".encode()).hexdigest()
+    params = {
+        "page": page,
+        "sign": sign,
+        "t": timestamp,
+    }
+    response = httpx.get(
+        "https://match.yuanrenxue.cn/api/match/20", params=params, headers=headers, cookies=cookies
+    )
+    print(response.text)
+    data = response.json()["data"]
+    for i in data:
+        sum += i["value"]
+print(sum)
