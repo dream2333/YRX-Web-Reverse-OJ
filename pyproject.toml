@@ -15,6 +15,9 @@ pycryptodome = "^3.18.0"
 py-mini-racer = "^0.6.0"
 requests = "^2.31.0"
 fonttools = "^4.43.1"
+frida = "^16.1.4"
+frida-tools = "^12.3.0"
+androidemu = "^0.0.2"
 
 
 
