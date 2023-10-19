@@ -6,10 +6,10 @@ url_cookies = "https://match.yuanrenxue.com/match/13"
 headers = {
     "User-Agent": "yuanrenxue.project",
 }
-cookies = {"sessionid":"lr3c6xrlgsmagzsvqbl41ap2h33eav7n"}
+cookies = {"sessionid": "lr3c6xrlgsmagzsvqbl41ap2h33eav7n"}
 nums = []
-proxy = {"https://": "http://127.0.0.1:8888"}
-client = httpx.Client(verify=False, headers=headers,cookies=cookies ,proxies=proxy, http2=True)
+client = httpx.Client(verify=False, headers=headers, cookies=cookies, http2=True)
+
 
 def get_page(page):
     params = {
@@ -21,7 +21,7 @@ def get_page(page):
         res_cookies = client.get(url_cookies, params=params)
         groups = re.findall("\('(.)'\)", res_cookies.text)
         cookie = "".join(groups).split("=")
-        client.cookies.set(cookie[0],cookie[1])
+        client.cookies.set(cookie[0], cookie[1])
         get_page(page)
     else:
         for k in res.json()["data"]:

@@ -1,5 +1,4 @@
-from py_mini_racer import MiniRacer
-import requests
+import httpx
 import execjs
 
 
@@ -13,8 +12,8 @@ with open("q5/sign.js", "r", encoding="utf-8") as f:
 cookies, params = js.call("getSign")
 cookies["sessionid"] = "zs6sm4jn3ax9ofci8ghmboe86sn8jgxe"
 
-client = requests.Session()
-nums =[]
+client = httpx.Client()
+nums = []
 for i in range(5):
     params["page"] = i + 1
     res = client.get(url, params=params, cookies=cookies)

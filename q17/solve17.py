@@ -1,5 +1,4 @@
 import httpx
-import re
 
 url = "https://match.yuanrenxue.com/api/match/17"
 headers = {
@@ -9,10 +8,7 @@ headers = {
 cookies = {"sessionid": "lr3c6xrlgsmagzsvqbl41ap2h33eav7n"}
 cookies2 = None
 nums = []
-proxy = {"https://": "http://127.0.0.1:8888"}
-client = httpx.Client(
-    verify=False, headers=headers, cookies=cookies, proxies=proxy, http2=True
-)
+client = httpx.Client(verify=False, headers=headers, cookies=cookies, http2=True)
 
 
 def get_page(page):

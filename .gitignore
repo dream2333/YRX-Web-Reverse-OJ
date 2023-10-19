@@ -10,6 +10,9 @@ node_modules
 .vscode
 package-lock.json
 test.py
+font.woff
+font.xml
+test.html
 
 # Distribution / packaging
 .Python

@@ -7,8 +7,7 @@ headers = {
     "cookie": "sessionid=lr3c6xrlgsmagzsvqbl41ap2h33eav7n;",
 }
 nums = []
-proxy = {"https://": "http://127.0.0.1:8888"}
-client = httpx.Client(verify=False, headers=headers, proxies=proxy,)
+client = httpx.Client(verify=False, headers=headers, follow_redirects=True)
 for i in range(5):
     params = {
         "page": i + 1,

@@ -36,7 +36,6 @@ headers = {
 }
 nums = []
 
-# proxy = {"http://": "http://127.0.0.1:8888", "https://": "http://127.0.0.1:8888"}
 client = httpx.Client(verify=cipher(), headers=headers, http2=True,)
 for i in range(5):
     params = {"page": i+1}
